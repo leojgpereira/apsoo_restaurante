@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="750.0" prefWidth="1440.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fill="WHITE" layoutX="20.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESTAURANTE FEIJÃO PRETO">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VENDA BALCÃO" wrappingWidth="129.9287109375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1100.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá Leandro!">
+         <font>
+            <Font name="Arial Bold" size="22.0" />
+         </font>
+      </Text>
+      <Pane layoutX="1300.0" layoutY="26.0" prefHeight="60.0" prefWidth="120.0" style="-fx-background-color: #fff; -fx-background-radius: 10;">
+         <children>
+            <Text fx:id="timeText" layoutX="32.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16:48">
+               <font>
+                  <Font name="Arial Bold" size="22.0" />
+               </font>
+            </Text>
+         </children></Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1.0" layoutY="100.0" stroke="WHITE" strokeType="INSIDE" width="1440.0" />
+      <Pane layoutX="20.0" layoutY="136.0" prefHeight="573.0" prefWidth="821.0" style="-fx-background-color: #fff; -fx-background-radius: 20;">
+         <children>
+            <Text layoutX="33.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CATEGORIAS">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnAlimentacao" layoutX="42.0" layoutY="65.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="238.0" style="-fx-background-radius: 20; -fx-background-color: #343A40;" text="ALIMENTAÇÃO" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnBebidas" layoutX="297.0" layoutY="64.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="238.0" style="-fx-background-radius: 20; -fx-background-color: #343A40;" text="BEBIDAS" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDoces" layoutX="549.0" layoutY="63.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="238.0" style="-fx-background-radius: 20; -fx-background-color: #343A40;" text="DOCES" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Button>
+            <Separator layoutX="7.0" layoutY="121.0" prefHeight="1.0" prefWidth="808.0" />
+            <ScrollPane fx:id="produtosScrollPane" layoutX="15.0" layoutY="129.0" prefHeight="407.0" prefWidth="790.0">
+               <content>
+                  <AnchorPane prefHeight="404.0" prefWidth="787.0">
+                     <children>
+                        <ListView fx:id="produtosListView" layoutX="-1.0" layoutY="-2.0" prefHeight="405.0" prefWidth="788.0" />
+                     </children>
+                  </AnchorPane>
+               </content></ScrollPane>
+         </children></Pane>
+      <Pane layoutX="866.0" layoutY="136.0" prefHeight="147.0" prefWidth="557.0" style="-fx-background-color: #fff; -fx-background-radius: 20;">
+         <children>
+            <Text layoutX="86.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLIENTE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="291.0" layoutY="15.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="238.0" style="-fx-background-radius: 20; -fx-background-color: #343A40;" text="NOVO CLIENTE" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Button>
+            <Text layoutX="88.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CÓDIGO">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="379.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Text>
+            <Pane layoutX="29.0" layoutY="100.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #BBBDC0; -fx-background-radius: 20;">
+               <children>
+                  <Text layoutX="83.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="001">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="295.0" layoutY="101.0" prefHeight="40.0" prefWidth="230.0" style="-fx-background-color: #BBBDC0; -fx-background-radius: 20;">
+               <children>
+                  <Text layoutX="49.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSUMIDOR">
+                     <font>
+                        <Font name="Arial" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children></Pane>
+      <Pane layoutX="866.0" layoutY="299.0" prefHeight="406.0" prefWidth="557.0" style="-fx-background-color: #fff; -fx-background-radius: 20;">
+         <children>
+            <Text layoutX="205.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PEDIDO #0001">
+               <font>
+                  <Font name="Arial Bold" size="22.0" />
+               </font>
+            </Text>
+            <Separator layoutX="2.0" layoutY="62.0" prefHeight="1.0" prefWidth="554.0" />
+            <Separator layoutY="272.0" prefHeight="1.0" prefWidth="554.0" />
+            <Text layoutX="16.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="19.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAGAMENTO">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Text>
+            <Button fx:id="finalizarVenda" layoutX="157.0" layoutY="358.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="238.0" style="-fx-background-radius: 20; -fx-background-color: #000;" text="FINALIZAR PEDIDO" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Button>
+            <Text fx:id="totalVendaText" layoutX="454.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R$ 150,00" textAlignment="RIGHT">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="metodosPagamentoComboBox" layoutX="396.0" layoutY="316.0" prefWidth="150.0" />
+            <ScrollPane layoutY="62.0" prefHeight="208.0" prefWidth="557.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="itensPedidoTableView" layoutX="-2.0" layoutY="2.0" prefHeight="204.0" prefWidth="557.0">
+                          <columns>
+                            <TableColumn fx:id="itemColumn" prefWidth="218.653076171875" />
+                            <TableColumn fx:id="valorUnitarioColumn" prefWidth="115.346923828125" text="Valor Unitário" />
+                              <TableColumn fx:id="quantidadeColumn" prefWidth="105.0228271484375" text="Quantidade" />
+                              <TableColumn fx:id="subtotalColumn" prefWidth="113.4771728515625" text="Subtotal" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children></Pane>
+   </children>
+</Pane>

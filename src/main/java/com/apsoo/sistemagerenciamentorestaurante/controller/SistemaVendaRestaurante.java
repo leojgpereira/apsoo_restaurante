@@ -48,6 +48,8 @@ public class SistemaVendaRestaurante implements Initializable {
     @FXML
     private ListView<Produto> produtosListView;
     @FXML
+    private Text codigoDaVendaText;
+    @FXML
     private TableView itensPedidoTableView;
     @FXML
     private TableColumn<ItemVenda, String> itemColumn;
@@ -93,7 +95,10 @@ public class SistemaVendaRestaurante implements Initializable {
         
         /* Define o comportamento dos botões de escolha de categorias */
         escolherCategoriasUI(produtos);
-        
+
+        /* Recupera número da venda e exibe na interface gráfica */
+        exibeCodigoDaVenda();
+
         /* Configura a TableView para mostrar os itens adicionados a venda */
         itensPedidoTableView.setPlaceholder(new Label("Não há itens no pedido"));
         itemColumn.setCellValueFactory(
@@ -166,6 +171,7 @@ public class SistemaVendaRestaurante implements Initializable {
         itemVendaList.clear();
         atualizarPedido();
         criarUIProduto();
+        exibeCodigoDaVenda();
     }
 
     private Venda criarVenda() {
@@ -313,5 +319,10 @@ public class SistemaVendaRestaurante implements Initializable {
         itensPedidoTableView.refresh();
 
         totalVendaText.setText("R$ " + String.format("%.2f", total).replace(".", ","));
+    }
+
+    private void exibeCodigoDaVenda() {
+        VendaDAO vendaDAO = new VendaDAO();
+        codigoDaVendaText.setText("PEDIDO #00" + vendaDAO.getNextId());
     }
 }

@@ -5,6 +5,7 @@ public class ItemVenda {
     private Double precoUnitario;
     private Integer quantidade;
     private Double subtotal;
+    private Venda venda;
 
     public ItemVenda(Produto produto, Integer quantidade) {
         this.produto = produto;
@@ -43,5 +44,13 @@ public class ItemVenda {
 
     public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
+    }
+
+    public Venda getVenda() {
+        return venda;
+    }
+
+    public void setVenda(Venda venda) {
+        this.venda = venda;
     }
 }

@@ -35,7 +35,6 @@ public class Venda {
     public void setCodigoDaVenda() {
         VendaDAO vendaDAO = new VendaDAO();
         this.codigoDaVenda = vendaDAO.getNextId() + 1;
-        System.out.println(codigoDaVenda);
     }
 
     public Double getValorTotal() {

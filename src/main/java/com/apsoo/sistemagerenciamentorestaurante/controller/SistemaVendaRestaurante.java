@@ -31,10 +31,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SistemaVendaRestaurante implements Initializable {
@@ -142,14 +139,33 @@ public class SistemaVendaRestaurante implements Initializable {
 
             ven.setItensVenda(listaProdutosSelecionados);
 
-            VendaDAO vendaDAO = new VendaDAO();
-            vendaDAO.inserir(ven);
+            for(ItemVenda itemVenda : ven.getItensVenda()) {
+                itemVenda.setVenda(ven);
+            }
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Venda Balcão");
-            alert.setContentText("Venda realizada com sucesso!");
-            alert.showAndWait();
+            if(metodoPagamento.getValue() != null) {
+                VendaDAO vendaDAO = new VendaDAO();
+                vendaDAO.inserir(ven);
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Venda Balcão");
+                alert.setContentText("Venda realizada com sucesso!");
+                alert.showAndWait();
+
+                resetVendaBalcao();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Venda Balcão");
+                alert.setContentText("Método de pagamento não selecionado!");
+                alert.showAndWait();
+            }
         }
+    }
+
+    private void resetVendaBalcao() {
+        itemVendaList.clear();
+        atualizarPedido();
+        criarUIProduto();
     }
 
     private Venda criarVenda() {

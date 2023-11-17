@@ -1,5 +1,6 @@
 package com.apsoo.sistemagerenciamentorestaurante.persistence;
 
+import com.apsoo.sistemagerenciamentorestaurante.model.ItemVenda;
 import com.apsoo.sistemagerenciamentorestaurante.model.Venda;
 import javafx.scene.control.Alert;
 
@@ -26,7 +27,13 @@ public class VendaDAO implements DAO<Venda, Integer> {
             pstmt.setString(5, venda.getMetodoPagamento());
             pstmt.setString(6, venda.getFuncionario());
             pstmt.execute();
-        } catch (SQLException e) {
+
+            ItemVendaDAO itemVendaDAO = new ItemVendaDAO();
+
+            for(ItemVenda itemVenda : venda.getItensVenda()) {
+                itemVendaDAO.inserir(itemVenda);
+            }
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Venda Balcão");
             alert.setContentText("Não foi possível registrar a venda!");

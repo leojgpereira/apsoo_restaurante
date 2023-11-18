@@ -1,7 +1,9 @@
 package com.apsoo.sistemagerenciamentorestaurante.controller;
 
 import com.apsoo.sistemagerenciamentorestaurante.model.ItemVenda;
+import com.apsoo.sistemagerenciamentorestaurante.model.PedidoReembolso;
 import com.apsoo.sistemagerenciamentorestaurante.model.Venda;
+import com.apsoo.sistemagerenciamentorestaurante.persistence.PedidoReembolsoDAO;
 import com.apsoo.sistemagerenciamentorestaurante.persistence.VendaDAO;
 import javafx.scene.control.ComboBox;
 
@@ -41,5 +43,20 @@ public class SistemaVendaRestaurante {
     }
 
     public void registrarReembolso(Venda venda, Double valorReembolso, String adm) {
+        PedidoReembolso pedidoReembolso = new PedidoReembolso();
+        pedidoReembolso.setValorReembolso(valorReembolso);
+        pedidoReembolso.setData(Date.valueOf(LocalDate.now()));
+        pedidoReembolso.setHora(Time.valueOf(LocalTime.now()));
+        pedidoReembolso.setAdministrador(adm);
+        pedidoReembolso.setVenda(venda);
+
+        PedidoReembolsoDAO pedidoReembolsoDAO = new PedidoReembolsoDAO();
+
+        try {
+            pedidoReembolsoDAO.inserir(pedidoReembolso);
+            System.out.println("Reembolso registrado com sucesso!");
+        } catch (Exception e) {
+            System.err.println("Erro ao registrar reembolso: " + e.getMessage());
+        }
     }
 }

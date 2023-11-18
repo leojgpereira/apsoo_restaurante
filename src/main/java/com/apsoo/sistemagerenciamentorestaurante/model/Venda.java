@@ -23,7 +23,6 @@ public class Venda {
         this.hora = hora;
         this.metodoPagamento = metodoPagamento;
         this.funcionario = funcionario;
-        this.itensVenda = itensVenda;
         this.cliente = cliente;
     }
 

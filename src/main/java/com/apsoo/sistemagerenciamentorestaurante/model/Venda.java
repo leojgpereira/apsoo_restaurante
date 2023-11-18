@@ -12,10 +12,11 @@ public class Venda {
     private Date data;
     private Time hora;
     private String metodoPagamento;
+    private String cliente;
     private String funcionario;
     private List<ItemVenda> itensVenda;
 
-    public Venda(Integer codigoDaVenda, Double valorTotal, Date data, Time hora, String metodoPagamento, String funcionario) {
+    public Venda(Integer codigoDaVenda, Double valorTotal, Date data, Time hora, String metodoPagamento, String funcionario, String cliente) {
         this.codigoDaVenda = codigoDaVenda;
         this.valorTotal = valorTotal;
         this.data = data;
@@ -23,6 +24,7 @@ public class Venda {
         this.metodoPagamento = metodoPagamento;
         this.funcionario = funcionario;
         this.itensVenda = itensVenda;
+        this.cliente = cliente;
     }
 
     public Venda() {
@@ -67,6 +69,14 @@ public class Venda {
 
     public void setMetodoPagamento(String metodoPagamento) {
         this.metodoPagamento = metodoPagamento;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
     public String getFuncionario() {

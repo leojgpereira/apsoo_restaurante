@@ -1,6 +1,6 @@
 package com.apsoo.sistemagerenciamentorestaurante;
 
-import com.apsoo.sistemagerenciamentorestaurante.controller.SistemaVendaRestaurante;
+import com.apsoo.sistemagerenciamentorestaurante.view.InicioView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,8 +17,8 @@ public class FeijaoPretoApplication extends Application {
             System.out.println(e);
         }
 
-        FXMLLoader fxmlLoader = new FXMLLoader(FeijaoPretoApplication.class.getResource("view/venda-balcao-view.fxml"));
-        fxmlLoader.setController(new SistemaVendaRestaurante());
+        FXMLLoader fxmlLoader = new FXMLLoader(FeijaoPretoApplication.class.getResource("view/inicio-view.fxml"));
+        fxmlLoader.setController(new InicioView());
         Scene scene = new Scene(fxmlLoader.load(), 1980, 1080);
         stage.setTitle("Restaurante Feijão Preto");
         stage.setScene(scene);

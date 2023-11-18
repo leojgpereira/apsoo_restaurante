@@ -67,7 +67,7 @@ public class VendaDAO implements DAO<Venda, Integer> {
         try {
             conexao = Conexao.abreConexao();
             Statement stmt = conexao.createStatement();
-            ResultSet resultado = stmt.executeQuery("SELECT * FROM produtos");
+            ResultSet resultado = stmt.executeQuery("SELECT * FROM vendas");
 
             while(resultado.next()) {
                 Venda venda = new Venda(
@@ -76,8 +76,11 @@ public class VendaDAO implements DAO<Venda, Integer> {
                         resultado.getDate("data"),
                         resultado.getTime("hora"),
                         resultado.getString("metodo_pagamento"),
-                        resultado.getString("funcionario")
+                        resultado.getString("funcionario"),
+                        resultado.getString("cliente")
                 );
+
+                System.out.println(venda.getCodigoDaVenda());
 
                 vendas.add(venda);
             }

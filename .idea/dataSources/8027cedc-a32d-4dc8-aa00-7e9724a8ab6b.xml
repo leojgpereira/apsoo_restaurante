@@ -999,8 +999,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="289" parent="1" name="apsoo_restaurante">
       <Current>1</Current>
-      <IntrospectionTimestamp>2023-11-17.11:11:24</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-11-17.19:11:24</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2023-11-17.19:17:45</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-11-18.03:17:45</LocalIntrospectionTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="290" parent="1" name="information_schema">
@@ -1184,12 +1184,18 @@ produto_id</ColNames>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <index id="332" parent="307" name="PRIMARY">
+    <column id="332" parent="307" name="cliente">
+      <DasType>varchar(255)|0s</DasType>
+      <DefaultExpression>&apos;CONSUMIDOR&apos;</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <index id="333" parent="307" name="PRIMARY">
       <ColNames>codigo_da_venda</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="333" parent="307" name="PRIMARY">
+    <key id="334" parent="307" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<Pane prefHeight="750.0" prefWidth="1440.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Text fill="WHITE" layoutX="20.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESTAURANTE FEIJÃO PRETO">
+            <font>
+                <Font name="Arial Bold" size="24.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="20.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="REEMBOLSO" wrappingWidth="129.9287109375">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="1100.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Olá Leandro!">
+            <font>
+                <Font name="Arial Bold" size="22.0" />
+            </font>
+        </Text>
+        <Pane layoutX="1300.0" layoutY="20.0" prefHeight="60.0" prefWidth="120.0" style="-fx-background-color: #fff; -fx-background-radius: 10;">
+            <children>
+                <Text fx:id="timeText" layoutX="32.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16:48">
+                    <font>
+                        <Font name="Arial Bold" size="22.0" />
+                    </font>
+                </Text>
+            </children></Pane>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1.0" layoutY="91.0" stroke="WHITE" strokeType="INSIDE" width="1440.0" />
+        <Pane layoutX="20.0" layoutY="136.0" prefHeight="573.0" prefWidth="1404.0" style="-fx-background-color: #fff; -fx-background-radius: 20;">
+            <children>
+                <ScrollPane fx:id="produtosScrollPane" layoutX="15.0" layoutY="19.0" prefHeight="467.0" prefWidth="1390.0">
+                    <content>
+                        <AnchorPane prefHeight="475.0" prefWidth="1389.0">
+                     <children>
+                        <TableView fx:id="vendasTableView" layoutX="-1.0" prefHeight="477.0" prefWidth="1390.0">
+                          <columns>
+                            <TableColumn fx:id="pedidoColumn" prefWidth="251.06856155395508" text="PEDIDO" />
+                            <TableColumn fx:id="dataColumn" prefWidth="228.77032470703125" text="DATA" />
+                              <TableColumn fx:id="horaColumn" prefWidth="171.22976684570312" text="HORA" />
+                              <TableColumn fx:id="clienteColumn" prefWidth="253.34136962890625" text="CLIENTE" />
+                              <TableColumn fx:id="metodoPagamentoColumn" prefWidth="276.15863037109375" text="MÉTODO DE PAGAMENTO" />
+                              <TableColumn fx:id="totalColumn" prefWidth="191.1453857421875" text="TOTAL" />
+                          </columns>
+                        </TableView>
+                     </children>
+                        </AnchorPane>
+                    </content></ScrollPane>
+            <Text layoutX="48.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digite o número do pedido que deseja reembolsar:">
+               <font>
+                  <Font name="Arial Bold" size="22.0" />
+               </font>
+            </Text>
+            <TextField fx:id="codigoDaVendaTextField" layoutX="735.0" layoutY="506.0" prefHeight="46.0" prefWidth="159.0" />
+            <TextField fx:id="valorReembolsoTextField" layoutX="984.0" layoutY="507.0" prefHeight="46.0" prefWidth="159.0" />
+            <Button fx:id="btnReembolso" layoutX="1201.0" layoutY="508.0" mnemonicParsing="false" style="-fx-background-color: #000; -fx-background-radius: 20;" text="Reembolsar" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="22.0" />
+               </font>
+            </Button>
+            <Text layoutX="712.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#">
+               <font>
+                  <Font name="Arial Bold" size="22.0" />
+               </font>
+            </Text>
+            <Text layoutX="949.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R$">
+               <font>
+                  <Font name="Arial Bold" size="22.0" />
+               </font>
+            </Text>
+            </children></Pane>
+    </children>
+</Pane>

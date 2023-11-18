@@ -3,23 +3,32 @@ package com.apsoo.sistemagerenciamentorestaurante.view;
 import com.apsoo.sistemagerenciamentorestaurante.controller.SistemaVendaRestaurante;
 import com.apsoo.sistemagerenciamentorestaurante.model.Venda;
 import com.apsoo.sistemagerenciamentorestaurante.persistence.VendaDAO;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.sql.Date;
 import java.sql.Time;
 import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ReembolsoView implements Initializable {
+    @FXML
+    private Text timeText;
     @FXML
     private TableView vendasTableView;
     @FXML
@@ -43,6 +52,18 @@ public class ReembolsoView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /* Carrega o horário para o campo correspondente na interface gráfica */
+        Timeline clock = new Timeline(
+                new KeyFrame(
+                        Duration.ZERO, e -> timeText.setText(
+                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"))
+                )
+                ),
+                new KeyFrame(Duration.seconds(1))
+        );
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
+
         VendaDAO vendaDAO = new VendaDAO();
         List<Venda> vendas = vendaDAO.recuperarTodos();
 

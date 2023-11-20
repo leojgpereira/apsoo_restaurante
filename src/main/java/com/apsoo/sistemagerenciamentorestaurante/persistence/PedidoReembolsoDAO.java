@@ -9,7 +9,7 @@ import java.util.List;
 public class PedidoReembolsoDAO implements DAO<PedidoReembolso, Integer> {
 
     @Override
-    public PedidoReembolso inserir(PedidoReembolso pedidoReembolso) {
+    public PedidoReembolso inserir(PedidoReembolso reembolso) {
         Connection conexao = null;
 
         try {
@@ -19,11 +19,11 @@ public class PedidoReembolsoDAO implements DAO<PedidoReembolso, Integer> {
 
             PreparedStatement pstmt = conexao.prepareStatement(codeSQL);
 
-            pstmt.setDouble(1, pedidoReembolso.getValorReembolso());
-            pstmt.setDate(2, pedidoReembolso.getData());
-            pstmt.setTime(3, pedidoReembolso.getHora());
-            pstmt.setString(4, pedidoReembolso.getAdministrador());
-            pstmt.setInt(5, pedidoReembolso.getVenda().getCodigoDaVenda());
+            pstmt.setDouble(1, reembolso.getValorReembolso());
+            pstmt.setDate(2, reembolso.getData());
+            pstmt.setTime(3, reembolso.getHora());
+            pstmt.setString(4, reembolso.getAdministrador());
+            pstmt.setInt(5, reembolso.getVenda().getCodigoDaVenda());
             pstmt.execute();
 
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class PedidoReembolsoDAO implements DAO<PedidoReembolso, Integer> {
             Conexao.fechaConexao(conexao);
         }
 
-        return pedidoReembolso;
+        return reembolso;
     }
 
     @Override

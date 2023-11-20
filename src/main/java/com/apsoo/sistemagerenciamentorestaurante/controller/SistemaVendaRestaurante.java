@@ -7,19 +7,15 @@ import com.apsoo.sistemagerenciamentorestaurante.persistence.PedidoReembolsoDAO;
 import com.apsoo.sistemagerenciamentorestaurante.persistence.VendaDAO;
 import javafx.scene.control.ComboBox;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 public class SistemaVendaRestaurante {
-    public void registrarVenda(List<ItemVenda> listaProdutosSelecionados, ComboBox<String> metodoPagamento, Double valorTotalVenda, String func) {
+    public void registrarVenda(List<ItemVenda> listaProdutosSelecionados, Double valorTotalVenda, ComboBox<String> metodoPagamento, String func) {
         Venda venda = new Venda();
         venda.setCodigoDaVenda();
         venda.setValorTotal(valorTotalVenda);
-        venda.setData(Date.valueOf(LocalDate.now()));
-        venda.setHora(Time.valueOf(LocalTime.now()));
+        venda.setData();
+        venda.setHora();
         venda.setMetodoPagamento(metodoPagamento.getValue());
 
         if(func != null) {
@@ -37,14 +33,14 @@ public class SistemaVendaRestaurante {
     }
 
     public void registrarReembolso(Venda venda, Double valorReembolso, String adm) {
-        PedidoReembolso pedidoReembolso = new PedidoReembolso();
-        pedidoReembolso.setValorReembolso(valorReembolso);
-        pedidoReembolso.setData(Date.valueOf(LocalDate.now()));
-        pedidoReembolso.setHora(Time.valueOf(LocalTime.now()));
-        pedidoReembolso.setAdministrador(adm);
-        pedidoReembolso.setVenda(venda);
+        PedidoReembolso reembolso = new PedidoReembolso();
+        reembolso.setValorReembolso(valorReembolso);
+        reembolso.setData();
+        reembolso.setHora();
+        reembolso.setVenda(venda);
+        reembolso.setAdministrador(adm);
 
         PedidoReembolsoDAO pedidoReembolsoDAO = new PedidoReembolsoDAO();
-        pedidoReembolsoDAO.inserir(pedidoReembolso);
+        pedidoReembolsoDAO.inserir(reembolso);
     }
 }

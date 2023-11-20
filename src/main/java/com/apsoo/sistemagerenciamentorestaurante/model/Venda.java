@@ -4,6 +4,8 @@ import com.apsoo.sistemagerenciamentorestaurante.persistence.VendaDAO;
 
 import java.sql.Time;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class Venda {
@@ -50,16 +52,16 @@ public class Venda {
         return data;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setData() {
+        this.data = Date.valueOf(LocalDate.now());
     }
 
     public Time getHora() {
         return hora;
     }
 
-    public void setHora(Time hora) {
-        this.hora = hora;
+    public void setHora() {
+        this.hora = Time.valueOf(LocalTime.now());
     }
 
     public String getMetodoPagamento() {

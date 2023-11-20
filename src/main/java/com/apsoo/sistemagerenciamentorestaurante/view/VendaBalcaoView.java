@@ -203,7 +203,7 @@ public class VendaBalcaoView implements Initializable {
             }
 
             SistemaVendaRestaurante sistemaVendaRestaurante = new SistemaVendaRestaurante();
-            sistemaVendaRestaurante.registrarVenda(itemVendaList, metodosPagamentoComboBox, total, func);
+            sistemaVendaRestaurante.registrarVenda(itemVendaList, total, metodosPagamentoComboBox, func);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Venda Balcão");

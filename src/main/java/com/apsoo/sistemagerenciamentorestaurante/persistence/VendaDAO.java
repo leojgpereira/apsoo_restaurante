@@ -39,9 +39,7 @@ public class VendaDAO implements DAO<Venda, Integer> {
             alert.setContentText("Não foi possível registrar a venda!");
             alert.showAndWait();
 
-            System.out.println(e);
-
-            return null;
+            throw new RuntimeException(e);
         } finally {
             Conexao.fechaConexao(conexao);
         }

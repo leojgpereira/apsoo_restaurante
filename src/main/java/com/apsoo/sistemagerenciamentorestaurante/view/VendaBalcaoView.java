@@ -184,22 +184,33 @@ public class VendaBalcaoView implements Initializable {
         metodosPagamentoComboBox.setPromptText("Selecione...");
 
         finalizarVenda.setOnAction(actionEvent -> {
-            SistemaVendaRestaurante sistemaVendaRestaurante = new SistemaVendaRestaurante();
-            Venda venda = sistemaVendaRestaurante.registrarVenda(itemVendaList, metodosPagamentoComboBox, total, func);
-
-            if(venda != null) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            if(itemVendaList.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Venda Balcão");
-                alert.setContentText("Venda realizada com sucesso!");
+                alert.setContentText("Nenhum produto adicionado ao pedido!");
                 alert.showAndWait();
 
-                resetVendaBalcao();
-            } else {
+                return;
+            }
+
+            if(metodosPagamentoComboBox.getValue() == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Venda Balcão");
                 alert.setContentText("Método de pagamento não selecionado!");
                 alert.showAndWait();
+
+                return;
             }
+
+            SistemaVendaRestaurante sistemaVendaRestaurante = new SistemaVendaRestaurante();
+            sistemaVendaRestaurante.registrarVenda(itemVendaList, metodosPagamentoComboBox, total, func);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Venda Balcão");
+            alert.setContentText("Venda realizada com sucesso!");
+            alert.showAndWait();
+
+            resetVendaBalcao();
         });
     }
 

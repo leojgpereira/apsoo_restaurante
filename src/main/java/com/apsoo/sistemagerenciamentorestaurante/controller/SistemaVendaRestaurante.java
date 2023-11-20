@@ -14,7 +14,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 public class SistemaVendaRestaurante {
-    public Venda registrarVenda(List<ItemVenda> listaProdutosSelecionados, ComboBox<String> metodoPagamento, Double valorTotalVenda, String func) {
+    public void registrarVenda(List<ItemVenda> listaProdutosSelecionados, ComboBox<String> metodoPagamento, Double valorTotalVenda, String func) {
         Venda venda = new Venda();
         venda.setCodigoDaVenda();
         venda.setValorTotal(valorTotalVenda);
@@ -32,14 +32,8 @@ public class SistemaVendaRestaurante {
             itemVenda.setVenda(venda);
         }
 
-        if(metodoPagamento.getValue() != null) {
-            VendaDAO vendaDAO = new VendaDAO();
-            vendaDAO.inserir(venda);
-
-            return venda;
-        }
-
-        return null;
+        VendaDAO vendaDAO = new VendaDAO();
+        vendaDAO.inserir(venda);
     }
 
     public void registrarReembolso(Venda venda, Double valorReembolso, String adm) {

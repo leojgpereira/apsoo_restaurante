@@ -103,6 +103,63 @@ public class VendaBalcaoView implements Initializable {
         exibeCodigoDaVenda();
 
         /* Configura a TableView para mostrar os itens adicionados a venda */
+        valorUnitarioColumn.setCellFactory(new Callback<TableColumn<ItemVenda, Double>, TableCell<ItemVenda, Double>>() {
+            @Override
+            public TableCell<ItemVenda, Double> call(TableColumn<ItemVenda, Double> vendaDoubleTableColumn) {
+                return new TableCell<ItemVenda, Double>() {
+                    @Override
+                    protected void updateItem(Double valorUnitario, boolean empty) {
+                        super.updateItem(valorUnitario, empty);
+
+                        if(empty){
+                            setText(null);
+                        }else {
+                            setText("R$ " + String.format("%.2f", valorUnitario).replace(".", ","));
+                            setStyle("-fx-alignment: center");
+                        }
+                    }
+                };
+            }
+        });
+
+        quantidadeColumn.setCellFactory(new Callback<TableColumn<ItemVenda, Integer>, TableCell<ItemVenda, Integer>>() {
+            @Override
+            public TableCell<ItemVenda, Integer> call(TableColumn<ItemVenda, Integer> vendaIntegerTableColumn) {
+                return new TableCell<ItemVenda, Integer>() {
+                    @Override
+                    protected void updateItem(Integer quantidade, boolean empty) {
+                        super.updateItem(quantidade, empty);
+
+                        if(empty){
+                            setText(null);
+                        }else {
+                            setText(quantidade.toString());
+                            setStyle("-fx-alignment: center");
+                        }
+                    }
+                };
+            }
+        });
+
+        subtotalColumn.setCellFactory(new Callback<TableColumn<ItemVenda, Double>, TableCell<ItemVenda, Double>>() {
+            @Override
+            public TableCell<ItemVenda, Double> call(TableColumn<ItemVenda, Double> vendaDoubleTableColumn) {
+                return new TableCell<ItemVenda, Double>() {
+                    @Override
+                    protected void updateItem(Double subtotal, boolean empty) {
+                        super.updateItem(subtotal, empty);
+
+                        if(empty){
+                            setText(null);
+                        }else {
+                            setText("R$ " + String.format("%.2f", subtotal).replace(".", ","));
+                            setStyle("-fx-alignment: center");
+                        }
+                    }
+                };
+            }
+        });
+
         itensPedidoTableView.setPlaceholder(new Label("Não há itens no pedido"));
         itemColumn.setCellValueFactory(
                 new PropertyValueFactory<>("produto")

@@ -2,6 +2,7 @@ package com.apsoo.sistemagerenciamentorestaurante.view;
 
 import com.apsoo.sistemagerenciamentorestaurante.controller.SistemaVendaRestaurante;
 import com.apsoo.sistemagerenciamentorestaurante.model.Venda;
+import com.apsoo.sistemagerenciamentorestaurante.persistence.PedidoReembolsoDAO;
 import com.apsoo.sistemagerenciamentorestaurante.persistence.VendaDAO;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -21,10 +22,7 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ReembolsoView implements Initializable {
     @FXML
@@ -50,6 +48,8 @@ public class ReembolsoView implements Initializable {
     @FXML
     private Button btnReembolso;
 
+    private String adm = "LEANDRO";
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         /* Carrega o horário para o campo correspondente na interface gráfica */
@@ -66,6 +66,8 @@ public class ReembolsoView implements Initializable {
 
         VendaDAO vendaDAO = new VendaDAO();
         List<Venda> vendas = vendaDAO.recuperarTodos();
+
+        atualizarListagemVendas(vendas);
 
         pedidoColumn.setCellFactory(new Callback<TableColumn<Venda, Integer>, TableCell<Venda, Integer>>() {
             @Override
@@ -229,12 +231,37 @@ public class ReembolsoView implements Initializable {
 
                     if(resposta.isPresent() && resposta.get() == ButtonType.OK) {
                         SistemaVendaRestaurante sistemaVendaRestaurante = new SistemaVendaRestaurante();
-                        sistemaVendaRestaurante.registrarReembolso(null, null, null);
+                        sistemaVendaRestaurante.registrarReembolso(ven.get(), valorReembolso, adm);
+
+                        Alert alertSucesso = new Alert(Alert.AlertType.INFORMATION);
+                        alertSucesso.setTitle("Pedido Reembolso");
+                        alertSucesso.setContentText("Reembolso realizada com sucesso!");
+                        alertSucesso.showAndWait();
+
+                        resetVendaReembolso(vendas);
                     } else {
                         System.out.println("Cancelar reembolso");
                     }
                 }
             }
         });
+    }
+
+    private void resetVendaReembolso(List<Venda> vendas) {
+        atualizarListagemVendas(vendas);
+        vendasTableView.setItems(FXCollections.observableList(vendas));
+        codigoDaVendaTextField.setText("");
+        valorReembolsoTextField.setText("");
+    }
+
+    private static void atualizarListagemVendas(List<Venda> vendas) {
+        List<Venda> vendasReembolsadas = new ArrayList<>();
+        PedidoReembolsoDAO pedidoReembolsoDAO = new PedidoReembolsoDAO();
+        for(Venda venda : vendas) {
+            if(pedidoReembolsoDAO.existeReembolso(venda.getCodigoDaVenda()) == 1) {
+                vendasReembolsadas.add(venda);
+            }
+        }
+        vendas.removeAll(vendasReembolsadas);
     }
 }

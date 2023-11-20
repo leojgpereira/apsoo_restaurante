@@ -1,11 +1,10 @@
 package com.apsoo.sistemagerenciamentorestaurante.persistence;
 
+import com.apsoo.sistemagerenciamentorestaurante.model.PedidoReembolso;
+import javafx.scene.control.Alert;
+
 import java.sql.*;
 import java.util.List;
-
-import com.apsoo.sistemagerenciamentorestaurante.model.PedidoReembolso;
-
-import javafx.scene.control.Alert;
 
 public class PedidoReembolsoDAO implements DAO<PedidoReembolso, Integer> {
 
@@ -33,9 +32,7 @@ public class PedidoReembolsoDAO implements DAO<PedidoReembolso, Integer> {
             alert.setContentText("Não foi possível registrar o pedido de reembolso!");
             alert.showAndWait();
 
-            System.out.println(e);
-
-            return null;
+            throw new RuntimeException(e);
         } finally {
             Conexao.fechaConexao(conexao);
         }
@@ -63,5 +60,25 @@ public class PedidoReembolsoDAO implements DAO<PedidoReembolso, Integer> {
     public void remover(Integer objetoID) {
         
     }
-    
+
+    public Integer existeReembolso(Integer vendaID) {
+        Connection conexao = null;
+
+        try {
+            conexao = Conexao.abreConexao();
+
+            String codeSQL = "SELECT COUNT(venda_id) AS reembolso FROM pedidos_reembolso WHERE venda_id = ?";
+
+            PreparedStatement preparedStatement = conexao.prepareStatement(codeSQL);
+            preparedStatement.setInt(1, vendaID);
+            ResultSet resultado = preparedStatement.executeQuery();
+            resultado.next();
+
+            return resultado.getInt("reembolso");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            Conexao.fechaConexao(conexao);
+        }
+    }
 }

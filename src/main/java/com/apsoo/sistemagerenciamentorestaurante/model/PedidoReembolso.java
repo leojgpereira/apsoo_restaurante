@@ -1,7 +1,5 @@
 package com.apsoo.sistemagerenciamentorestaurante.model;
 
-// import com.apsoo.sistemagerenciamentorestaurante.persistence.VendaDAO;
-
 import java.sql.Time;
 import java.sql.Date;
 

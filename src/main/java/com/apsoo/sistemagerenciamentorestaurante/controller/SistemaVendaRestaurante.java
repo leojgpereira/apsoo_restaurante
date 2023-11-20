@@ -51,12 +51,6 @@ public class SistemaVendaRestaurante {
         pedidoReembolso.setVenda(venda);
 
         PedidoReembolsoDAO pedidoReembolsoDAO = new PedidoReembolsoDAO();
-
-        try {
-            pedidoReembolsoDAO.inserir(pedidoReembolso);
-            System.out.println("Reembolso registrado com sucesso!");
-        } catch (Exception e) {
-            System.err.println("Erro ao registrar reembolso: " + e.getMessage());
-        }
+        pedidoReembolsoDAO.inserir(pedidoReembolso);
     }
 }

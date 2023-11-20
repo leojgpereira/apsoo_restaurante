@@ -80,8 +80,6 @@ public class VendaDAO implements DAO<Venda, Integer> {
                         resultado.getString("cliente")
                 );
 
-                System.out.println(venda.getCodigoDaVenda());
-
                 vendas.add(venda);
             }
         } catch (SQLException e) {
